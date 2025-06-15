@@ -1,0 +1,772 @@
+@font-face {
+    font-family: 'PixelR10';
+    src: url('Fonts/PixelMplus10-Regular.ttf');
+}
+@font-face {
+    font-family: 'PixelR12';
+    src: url('Fonts/PixelMplus12-Regular.ttf');
+}
+@font-face{
+    font-family: 'PixelB10';
+    src: url('Fonts/PixelMplus10-Bold.ttf');
+} 
+@font-face{
+    font-family: 'PixelB12';
+    src: url('Fonts/PixelMplus12-Bold.ttf');
+}
+:root{
+    --Core : #3d5dff;
+    --none : #ffffff00;
+    --bluthro: #002affa8;
+    --lightBg : #e4e4ff;
+    --darkBg : #17171d;
+    --darkTask : #2e333b;
+    --noTask : #515982;
+
+    --addText : #040057;
+    --buttonsBg : #dae0ff;
+}
+
+@keyframes RewardAnim{
+    0%{
+        opacity: 0;
+        transform: translate(-50%, 50px);
+    }
+    10%, 90%{
+         opacity: 1;
+        transform: translate(-50%, -50px);
+    }
+    100%{
+         opacity: 0;
+        transform: translate(-50%, 50px);;
+    }
+}
+*{
+    
+  /*  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+*/
+font-family: 'PixelR12';
+  }
+body{
+    margin: 0;
+    padding: 0;
+}
+body, button, div, span {
+user-select: none;
+}
+.Dark{
+    color: white;
+ background-color: var(--darkBg);
+}
+.Light{
+    background-color: var(--lightBg);
+    color: black;
+}
+.loadingScene{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--Core);
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+.outerLogin{
+      display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--Core);
+}
+.lginHlo{
+    scale: 2;
+    position: absolute;
+    top: 20%;
+    transition: all ease 0.5s;
+    color: white;
+}
+.lginHlo:hover{
+    scale: 2.1;
+}
+.loginBtn{
+    width: 40%;
+    height: 50px;
+    font-size: medium;
+    position: absolute;
+    top: 40%;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: black;
+    transition: all ease 0.3s;
+}
+.loginBtn:hover{
+      background-color:white ;
+      color: var(--Core);
+      border: 1px solid var(--Core);
+      font-weight: bolder;
+}
+
+
+.collector{
+       overflow: hidden;
+}
+/*
+.c0{
+width: 100%;
+display: flex;
+justify-content: center;
+}
+.c1{
+display: flex;
+width: 90%;
+height: auto;
+min-height: 100px;
+}
+.c2{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    flex-grow: 0.8;
+    background-color: gray;
+}
+.c3{
+     border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    flex-grow: 0.2;
+    background-color: 3048c1;
+}*/
+
+.outer{
+display: flex;
+justify-content: center;
+}
+.TaskBox{
+    display: flex;
+    width: 90%;
+    margin-top: 10px;
+    height: auto;
+    min-height: 100px;
+    border: 1px solid rgba(39, 39, 51, 0.533);
+    transition: all, ease, 0.5s;
+    border-radius: 20px;
+    margin: 5px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+
+}
+.detailsArea{
+    background-color: white;
+    color: var(--darkTask);
+    flex: 0 0 70%;
+    padding-left: 20px;
+    padding-right: 10px;
+    transition: all ease 0.5s;
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-break: break-word;
+}
+.detailsAreaD{
+    background-color: var(--darkTask);
+    color: white;
+    flex: 0 0 70%;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all ease 0.5s;
+    overflow-wrap: break-word;
+    white-space: normal;
+    word-break: break-word;
+    }
+.difAndStr{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.isChecked{
+        background-color: var(--Core);
+        color: white;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        flex: 0 0 70%;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: all ease 0.5s;
+        overflow-wrap: break-word;
+        white-space: normal;
+        word-break: break-word;
+
+}
+.TaskTitle{
+    font-weight: 500;
+}
+.checkArea{
+    background-color: var(--Core);
+    display: flex;
+    transition: all ease 0.5s;
+    flex-direction: column;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 30%;
+    border: none;
+}
+.checkAreaNotToday{
+    background-color: var(--noTask);
+    transition: all ease 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 30%;
+    border: none;
+}
+
+.check{
+    cursor: pointer;
+    scale:2;
+}
+
+
+/*
+.outer{
+    display: flex;
+    justify-content: center;
+}
+.TaskBox{
+    display: flex;
+    width: 90%;
+    max-width: 800px;
+    min-height: 100px;
+    max-height: 300px;
+    border: 1px solid rgba(39, 39, 51, 0.533);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 5px;
+    overflow: hidden;
+    background: linear-gradient(to right, white 85%, 3d5dff 15%);
+    transition: all, ease, 0.5s;
+}
+.TaskBoxD{
+     display: flex;
+    width: 90%;
+    max-width: 800px;
+    min-height: 100px;
+    max-height: 300px;
+    border: 1px solid rgba(39, 39, 51, 0.533);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 5px;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(46, 51, 59) 85%, 3d5dff 15%);
+    transition: all, ease, 0.5s;
+    color: white;
+}
+.isChecked{
+    display: flex;
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    max-height: 350px;
+    border: 1px solid rgb(39, 39, 51);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 5px;
+    overflow: hidden;
+    background-color:  3d5dff;
+    color: white;
+    transition: all, ease, 0.5s;
+}
+
+.detailsArea{
+    flex-grow: 0.8;
+    height: 100%;
+    background-color: rgba(50, 151, 3, 0);
+    cursor: pointer;
+    overflow-wrap: break-word;
+}
+
+    
+.ShowMenu{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+.checkArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(3, 62, 151, 0);
+    flex-grow: 0.2;
+}
+*/
+.logOut{
+     cursor: pointer;
+    border: none;
+    border-bottom:2px solid var(--none) ;
+    color: var(--Core);
+    background-color: var(--none);
+    transition: all ease 0.3s;
+    font-size: medium;
+   border-radius: 2px;
+}
+.buttons{
+    cursor: pointer;
+    border: none;
+    border-bottom:2px solid var(--none) ;
+    color: white;
+    background-color: var(--none);
+    transition: all ease 0.3s;
+    font-size: medium;
+   border-radius: 2px;
+}
+.buttons:hover{
+   border-bottom: 2px solid white;
+
+}
+.buttonContainer{
+    width: 100%;
+    height: 35px;
+    background-color: var(--bluthro);
+    z-index: 2;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    
+}
+.buttonContainer input{
+    background-color: var(--none);
+    color: white;
+    flex-grow: 0.8;
+    border: none;
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+.buttonContainer input::placeholder{
+    color: white;
+}
+.lvldiv{
+    display: flex;
+    margin-left: 20px;
+}
+.levelnum{
+   transition: all ease 0.2s;
+    position: relative;
+    left: 20px;
+}
+.levelnum:hover{
+    color: var(--Core);
+}
+.lvldivd{
+      color: white;
+      display: flex;
+      margin-left: 20px;
+}
+.dmbtn{
+    cursor: pointer;
+    height: 40px;
+    width: 90px;
+    color: white;
+    border: none;
+    font-size: larger;
+    background-color: var(--Core);
+    border-radius: 5px;
+}
+.bottomLine{
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    width: 100%;
+    background-color: var(--bluthro);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    bottom: 0px;
+    color: white;
+    
+}
+.bottomLine button{
+    transition: all ease 0.3s;
+    cursor: pointer;
+    height: 40px;
+    width: 90px;
+    color: white;
+    border: none;
+    border-top: 2px solid var(--none);
+    font-size: larger;
+    background-color:var(--none);
+}
+.bottomLine button:hover{
+    border-top: 2px solid white;
+}
+#addButton{   
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(0, 0, 255, 0);
+    border: none;
+    border-top: 2px solid var(--none);
+    transition: all ease 0.2s;
+    transform: rotate(0deg);
+}
+#addButtonClicked{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(0, 0, 255, 0);
+    border: none;
+    border-top: 2px solid var(--none);
+    transition: all ease 0.2s;
+    transform: rotate(135deg);
+    }
+
+    .addingList{
+        opacity: 0;  
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -300px;
+        transition: all ease 0.2s;
+        border: 1px solid var(--Core);
+        color: var(--Core);
+    }
+     .addingListAppear{
+        opacity: 1;
+        border-radius: 20px;
+        display: flex;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 100px;
+        transition: all ease 0.2s;
+        background-color: var(--lightBg);
+        font-weight: bolder;
+        border: 1px solid var(--Core);
+        color: var(--Core);
+        width: 200px;
+        height: auto;
+        box-shadow:0 0 50px 0px var(--Core);
+        overflow: hidden;
+    }
+.innerAdds{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+    .addingListAppear > *:not(:last-child) {
+  border-bottom: 1px solid var(--Core);
+
+}
+    .AddTask, .AddToDo, .AddHabit{
+        cursor: pointer;
+        transition: all ease 0.2s;
+        width: 100%;
+        height: 70px;
+
+        
+    } 
+      .AddTask:hover, .AddToDo:hover, .AddHabit:hover{
+       background-color: white;
+       color: blue;
+    } 
+
+
+                          /*ADD TASK PAGE*/
+
+.topPart{
+color: white;
+background-color: var(--Core);
+height: 280px;
+}
+.bottomPart{
+    height: 100vh;
+
+}
+
+.actionButtons{
+    cursor: pointer;
+    border-bottom: 2px solid var(--none);
+    transition: all ease 0.5s;
+}
+.actionButtons:hover{
+border-bottom: 2px solid white;
+}
+.outerinputcon{
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+   
+}
+.innerinputcon{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100%;
+      height: 200px;
+}
+.taskNameInput{
+border: none;
+background-color: var(--lightBg);
+color: var(--addText);
+resize: none;
+width: 90%;
+flex-grow: 0.2;
+margin-bottom: 4px;
+text-align: start;
+font-size: larger;
+border-top-right-radius: 20px;
+}
+.taskNameInput::placeholder{
+color: var(--noTask);
+}
+
+.taskDetailsInput{
+border: none;
+background-color: var(--lightBg);
+color: var(--addText);
+resize: none;
+width: 90%;
+flex-grow: 0.8;
+font-size: larger;
+border-bottom-left-radius: 20px;
+
+}
+.taskDetailsInput::placeholder{
+color: var(--noTask);
+}
+.r{
+    color: var(--Core);
+    margin-left: 15px;
+}
+#weekDaysDiv{
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+#outerWeekDaysDiv{
+    border-top: 3px solid var(--Core);
+}
+.weekDays{
+    cursor: pointer;
+    border: 2px solid var(--Core);
+    background-color: var(--buttonsBg);
+    color: var(--Core);
+    border-radius: 20px;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    transition: all, ease, 0.5s;
+}
+.weekDaysClicked{
+    cursor: pointer;
+    border: 2px solid var(--none);
+    background-color: var(--Core);
+    color: white;
+    border-radius: 20px;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    transition: all, ease, 0.5s;
+}
+
+.allWeekDays{
+    cursor: pointer;
+    border: 2px solid var(--Core);
+    background-color: var(--buttonsBg);
+    color: var(--Core);
+    border-radius: 20px;
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    transition: all, ease, 0.5s;
+    margin-left: 15px;
+}
+.allWeekDaysClicked{
+    cursor: pointer;
+    border: 2px solid var(--none);
+    background-color: var(--Core);
+    color: white;
+    border-radius: 20px;
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    transition: all, ease, 0.5s;
+    margin-left: 15px;
+}
+
+.diffContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.diffs{
+      cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    border: 1px solid var(--Core);
+    border-radius: 20px;
+    background-color: var(--buttonsBg);
+    color: var(--Core);
+    transition: all ease 0.3s;
+}
+.diffs:hover{
+     background-color: white;
+   
+}
+.diffPicked{
+      cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+    border: 1px solid var(--Core);
+    border-radius: 20px;
+    background-color: var(--Core);
+    color: white;
+    transition: all ease 0.3s;
+
+}
+
+.weekDays:hover,.weekDaysClicked:hover, .allWeekDays:hover, .allWeekDaysClicked:hover{
+ box-shadow: var(--Core) 0px 0px 10px;
+}
+
+.btmbtns{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btmbtns h3{
+flex-grow: 0.8;
+}
+.btmbtns h2{
+flex-grow: 0.8;
+}
+
+
+                /*EXP SECTION*/
+
+      
+.showReward{
+position: fixed;
+width: 120px;
+height: 30px;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgb(0, 155, 0);
+box-shadow: black 0px 0px 10px;
+color: white;
+border: none;
+border-radius: 20px;
+opacity: 0;
+text-align: center;
+padding-top: 12px;
+}
+
+.showRedReward{
+    position: fixed;
+    width: 120px;
+    height: 30px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(155, 0, 0);
+    box-shadow: black 0px 0px 10px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    opacity: 0;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.rewardAppear{
+    animation: RewardAnim 3s ease;
+}
+.outerContainer{
+    margin-left: 15px;
+    display: flex;
+    width: 60%;
+}
+.outBar{
+    height: 10px;
+    width: 100%;
+    border-radius: 50px;
+    background-color: rgb(168, 168, 168);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    flex-grow: 0.6;
+}
+.dataShow{
+    flex-grow: 0.3;
+    scale: 0.8;
+    position: relative;
+    bottom: 6px;
+    color: var(--darkBg);
+}
+.dataShowd{
+    flex-grow: 0.3;
+    scale: 0.8;
+    position: relative;
+    bottom: 6px;
+    color: var(--lightBg);
+}
+.ExpBar{
+    height: 10px;
+    border-radius: 50px;
+    background: linear-gradient(to right, rgb(78, 108, 255) 0%, rgb(0, 32, 214) 100%);
+    transition: all, ease, 0.5s;
+    
+}
+/*                       EditTask                               */
+.outerDelete{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.red{
+    transition: all ease 0.2s;
+    border: 1px solid var(--none);
+    color: rgb(255, 255, 255);
+    background-color: red;
+    border-radius: 5px;
+    scale: 2;
+    height: 20px;
+    width:15%;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20%;
+}
+.red:hover{
+    box-shadow: red 0px 0px 10px;
+   border: 1px solid white ;
+
+}
+
+.AccountCon,.TodoCon,.HabitsCon{
+text-align: center;
+color: var(--Core);
+}
+
