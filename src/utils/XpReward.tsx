@@ -51,9 +51,7 @@ const XpReward = async (GivenReward: number)=> {
 
    
   })
-   return(
-        <div className="showRewards">{GivenReward}</div>
-    )
+ 
 
     }
     

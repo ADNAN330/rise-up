@@ -7,12 +7,12 @@ import {GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyClhJbJk85nb7C_YvyR2mrj3qvQUMRZk5Q",
-  authDomain: "riseup-20bbe.firebaseapp.com",
-  projectId: "riseup-20bbe",
-  storageBucket: "riseup-20bbe.firebasestorage.app",
-  messagingSenderId: "482524120442",
-  appId: "1:482524120442:web:11f0afa60d3aa31521c2c3"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 
