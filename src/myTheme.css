@@ -144,14 +144,16 @@ justify-content: center;
 }
 .TaskBox{
     display: flex;
+    justify-content: flex-start;
     width: 90%;
-    margin-top: 10px;
+    min-height: 50px;
     height: auto;
-    min-height: 100px;
-    border: 1px solid rgba(39, 39, 51, 0.533);
-    transition: all, ease, 0.5s;
-    border-radius: 20px;
     margin: 5px;
+    font-size: 85%;
+    line-height: 1;
+    border: 1px solid rgba(39, 39, 51, 0.533);
+    border-radius: 20px;
+    transition: all, ease, 0.5s;
     overflow: hidden;
     overflow-wrap: break-word;
 

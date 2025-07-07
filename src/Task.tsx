@@ -171,7 +171,7 @@ const Task: React.FC<Taskprops> = ({name, details, Diffeculty, myid, randomDrop,
 
             <h3 className="TaskTitle">{name}</h3>
 
-            <h5>{details}</h5>
+            <h5 className="TaskDetails">{details}</h5>
             <div className="difAndStr">
             <h6>{Diffeculty}</h6>
             <h6>{streak}</h6>
