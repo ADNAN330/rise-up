@@ -14,40 +14,50 @@ const resetDailyTask = async (taskId: string) => {
   if (!taskSnap.exists()) return;
 
   const task = taskSnap.data();
+
+  const repeatDays: number[] = Array.isArray(task.repeatDays) ? task.repeatDays : [];
+
   const lastChecked: Date | undefined = task.lastChecked?.toDate();
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  if (!lastChecked || lastChecked.setHours(0, 0, 0, 0) < today.getTime()) {
-     let wasDone = task.isDone;
-     const dayIndex = new Date().getDay();  
+  let shouldResetStreak = false;
 
-  if (!Array.isArray(task.repeatDays) || !task.repeatDays.includes(dayIndex)) {
- await updateDoc(taskRef, {
-      isDone: false,
-      gotRewards: false,
-      lastChecked: Timestamp.now()
-    });
-    return;
-  }
+if (lastChecked) {
+  const last = new Date(lastChecked);
+  last.setHours(0, 0, 0, 0);
 
-    if(wasDone == false){
-      await updateDoc(taskRef, {
-        Streak: 0,
-         isDone: false,
-      gotRewards: false,
-      lastChecked: Timestamp.now()
-      })
-    }else{
- await updateDoc(taskRef, {
-      isDone: false,
-      gotRewards: false,
-      lastChecked: Timestamp.now()
-    });
+    if (last.getTime() === today.getTime()) return;
+
+  let day = new Date(last);
+  day.setDate(day.getDate() + 1);
+
+
+  while (day < today) {
+    const missedDayIndex = day.getDay();
+    if (repeatDays.includes(missedDayIndex)) {
+      shouldResetStreak = true;
+      break;
     }
-   
+    day.setDate(day.getDate() + 1);
   }
+} else {
+  shouldResetStreak = true;
+}
+
+const updates: any = {
+  isDone: false,
+  gotRewards: false,
+  lastChecked: Timestamp.now(),
+};
+
+if (shouldResetStreak) {
+  updates.Streak = 0;
+}
+
+await updateDoc(taskRef, updates);
+
 };
 
 
