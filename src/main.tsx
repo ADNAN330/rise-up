@@ -14,7 +14,7 @@ import DailyResetSingle from './utils/TaskCheckReset';
 
 //Elements
 import Task from './Task';
-import ToDo from './ToDo';
+import ToDoPage from './ToDoPage';
 import Habits from './Habits';
 import Account from './Account';
 import AddTask from './AddTask';
@@ -26,6 +26,7 @@ import XPBar from './XPBar';
 
 //Icons
 import searchIcon from './Icons/Search-icon.png'
+import AddToDoPage from './AddToDoPage';
 
 
 const Home = () => {
@@ -383,7 +384,7 @@ else return ( //The main state, shows all tasks or only today's tasks
 )
       :
       (
-           shownData === 'Todo'? <div className="TodoCon"><ToDo/></div>
+           shownData === 'Todo'? <div className="TodoCon"><ToDoPage/></div>
          : shownData === 'Habits'? <div className="HabitsCon"><Habits/> </div>
          : shownData === 'Account' ?<div className='AccountCon'><Account/>
        <button className='dmbtn' onClick={toggleDarkMode}>{darkMode? 'Light':'Dark'}</button>
@@ -414,10 +415,11 @@ createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/ToDo" element={<ToDo />} />
+      <Route path="/ToDos" element={<ToDoPage />} />
       <Route path="/Habits" element={<Habits />} />
       <Route path="/Account" element={<Account />} />
       <Route path="/addTask" element={<AddTaskPage />} />
+      <Route path="/addToDo" element={<AddToDoPage />} />      
       <Route path="/EditTask/:id" element={<EditTask />} />
       <Route path="/LogIn" element={<LogIn />} />
 

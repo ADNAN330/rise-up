@@ -37,7 +37,7 @@ useEffect(() => {
         <div ref={menuRef} className={isClicked ? 'addingListAppear' : 'addingList'}>
           <div className="AddTask" onClick={() =>navigate('/addTask')}><div className="innerAdds"> Add Task</div>
           </div>
-          <div className="AddToDo"><div className="innerAdds"> Add To-Do</div>
+          <div className="AddToDo" onClick={() =>navigate('/addToDo')}><div className="innerAdds"> Add To-Do</div>
           </div>
           <div className="AddHabit"><div className="innerAdds"> Add Habit</div>
           </div>

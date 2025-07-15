@@ -91,10 +91,7 @@ function AddTaskPage( ) {
         setIsCheckedEveryDay(false);
       }
     }
-    /*const removeDay = (day: number) => {
-      setTaskRepeat((prev) => prev.filter((item) => item !== day));
-    }*/
-    
+
 
    const auth = getAuth();
 
@@ -148,7 +145,7 @@ function Submit() {
         <div className="topPart">
           
               <div className="btmbtns">
-                <h3>Add a new task</h3>
+                <h3>Add A New Task</h3>
                  <h4 className='actionButtons' onClick={()=> navigate('/')}> Back</h4>
                  <h4 className='actionButtons' onClick={Submit}>Add</h4>
               </div>
