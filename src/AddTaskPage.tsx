@@ -10,7 +10,7 @@ import { getAuth } from 'firebase/auth';
 
 
 
-function AddTaskPage( ) {
+function AddTaskPage() {
   
   
   
