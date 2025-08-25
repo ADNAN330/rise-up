@@ -12,19 +12,20 @@ import { onAuthStateChanged, getAuth, User } from 'firebase/auth';
 import './myTheme.css';
 
 // Components
-import TaskList from './TaskList';
+//import TaskList from './TaskList';
 import ToDoPage from './ToDoPage';
 import Habits from './HabitsPage';
 import Account from './AccountPage';
 import AddTask from './AddTask';
 import AddTaskPage from './AddTaskPage';
+import TasksPage from './TasksPage';
 import LogIn from './LogIn';
 import EditTask from './EditTask';
 import XPBar from './XPBar';
 import AddToDoPage from './AddToDoPage';
+import TaskSearchBar from './TaskSearchBar';
 
 // Icons
-import searchIcon from './Icons/Search-icon.png';
 
 const Home = () => {
 
@@ -59,21 +60,12 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isThemeLoaded, setIsThemeLoaded] = useState(false);
 
-  const [search, setSearch] = useState<Boolean>(false);
+  const [search, setSearch] = useState<boolean>(false);
   const [searchedContent, setSearchedContent] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [user, setUser] = useState<User | null>(null);
 
-const BottomNav = ({ setShownData }: { setShownData: React.Dispatch<React.SetStateAction<'Tasks' | 'Todo' | 'Habits' | 'Account'>> }) => (
-  <div className="bottomLine">
-    <button onClick={() => setShownData('Tasks')}>Tasks</button>
-    <button onClick={() => setShownData('Todo')}>To-Do</button>
-    <AddTask />
-    <button onClick={() => setShownData('Habits')}>Habits</button>
-    <button onClick={() => setShownData('Account')}>Account</button>
-  </div>
-);
 
   
   // --- Firebase Functions ---
@@ -237,28 +229,16 @@ const BottomNav = ({ setShownData }: { setShownData: React.Dispatch<React.SetSta
  // --- Main UI ---
 return (
   <>
-    <div>
-      {!search ? (
-        <div className="buttonContainer">
-          <img className='buttons' src={searchIcon} alt="search" onClick={() => setSearch(true)} />
-          <button className='buttons' onClick={() => handleCheck(setShowAll)}>
-            {showAll ? 'Show For Today' : 'Show All'}
-          </button>
-          <button className='buttons' onClick={() => alert('Beta, For any bugs : adnanhamdo2005@gmail.com')}>Info</button>
-        </div>
-      ) : (
-        <div className="buttonContainer">
-          <button className='buttons' onClick={() => { setSearch(false); setSearchedContent(''); }}>Back</button>
-          <input
-            value={searchedContent}
-            onChange={(e) => setSearchedContent(e.target.value)}
-            ref={inputRef}
-            type="text"
-            placeholder='Search Here...'
-          />
-        </div>
-      )}
-    </div>
+   <TaskSearchBar
+  search={search}
+  setSearch={setSearch}
+  searchedContent={searchedContent}
+  setSearchedContent={setSearchedContent}
+  showAll={showAll}
+  setShowAll={setShowAll}
+  handleCheck={handleCheck}
+/>
+
 
     <br /><br />
 
@@ -270,14 +250,17 @@ return (
 
     <div>
       {shownData === 'Tasks' ? (
-        finalTasks.length === 0 ? (
-          <h2>No tasks yet. Add some!</h2>
-        ) : (
-          <TaskList tasks={finalTasks} darkMode={darkMode} isTodayTask={isTodayTask} />
-        )
-      ) : shownData === 'Todo' ? (
-        <div className="TodoCon"><ToDoPage /></div>
-      ) : shownData === 'Habits' ? (
+   <TasksPage
+    tasks={tasks}
+    filteredTasks={filteredTasks}
+    finalTasks={finalTasks}
+    showAll={showAll}
+    darkMode={darkMode}
+    isTodayTask={isTodayTask}
+    />
+) : shownData === 'Todo' ? (
+  <div className="TodoCon"><ToDoPage /></div>
+) : shownData === 'Habits' ? (
         <div className="HabitsCon"><Habits /></div>
       ) : shownData === 'Account' ? (
         <div className='AccountCon'>
@@ -289,8 +272,13 @@ return (
       ) : <h1>195Error</h1>}
     </div>
 
-    <BottomNav setShownData={setShownData} />
-
+   <div className="bottomLine">
+    <button onClick={() => setShownData('Tasks')}>Tasks</button>
+    <button onClick={() => setShownData('Todo')}>To-Do</button>
+    <AddTask />
+    <button onClick={() => setShownData('Habits')}>Habits</button>
+    <button onClick={() => setShownData('Account')}>Account</button>
+  </div>
     <br /><br /><br /><br /><br />
   </>
 );
