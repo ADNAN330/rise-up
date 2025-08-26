@@ -1,4 +1,16 @@
-function ToDo() {
+type ToDoProps = {
+name: string | number;
+
+details: string | number;
+
+Diffeculty : 'Simple'| 'Easy' | 'Medium' | 'Hard' | 'Extreme';
+}
+
+
+const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty}) => {
+  
+    
+
   return (
    <div>
         
@@ -10,12 +22,11 @@ function ToDo() {
 
             <div className={'detailsArea'}>
 
-            <h3 className="TaskTitle">Do this ToDo and then check it </h3>
+            <h3 className="TaskTitle">{name}</h3>
 
-            <h5 className="TaskDetails">The Ultimate ToDo Page Which Has Details And Name Switched!!</h5>
+            <h5 className="TaskDetails">{details}</h5>
             <div className="difAndStr">
-            <h6></h6>
-            <h6></h6>
+            <h6>{Diffeculty}</h6>
             </div>
            
             
