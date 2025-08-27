@@ -259,7 +259,7 @@ return (
     isTodayTask={isTodayTask}
     />
 ) : shownData === 'Todo' ? (
-  <div className="TodoCon"><ToDoPage /></div>
+  <div className="TodoCon" ><ToDoPage darkmode={darkMode}  /></div>
 ) : shownData === 'Habits' ? (
         <div className="HabitsCon"><Habits /></div>
       ) : shownData === 'Account' ? (
@@ -290,7 +290,7 @@ createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/ToDos" element={<ToDoPage />} />
+      <Route path="/ToDos" element={<ToDoPage darkmode={false} />} />
       <Route path="/Habits" element={<Habits />} />
       <Route path="/Account" element={<Account />} />
       <Route path="/addTask" element={<AddTaskPage />} />

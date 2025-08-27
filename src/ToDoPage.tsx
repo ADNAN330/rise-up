@@ -14,7 +14,11 @@ type ToDoType = {
   isDone: boolean;
 };
 
-const ToDoPage: React.FC = () => {
+type darkmodeType = {
+  darkmode: boolean;
+}
+
+const ToDoPage: React.FC<darkmodeType> = ({darkmode}) => {
   const [todos, setTodos] = useState<ToDoType[]>([]);
 
   const auth = getAuth();
@@ -48,7 +52,7 @@ const ToDoPage: React.FC = () => {
       {todos.length === 0 ? (
         <h2>No todos yet. Add some!</h2>
       ) : (
-        <ToDoList todos={todos} />
+        <ToDoList todos={todos}  darkMode={darkmode}/>
       )}
     </div>
   );

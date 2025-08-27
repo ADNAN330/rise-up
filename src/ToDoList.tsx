@@ -15,9 +15,10 @@ import ToDo from './ToDo';
   };
 interface ToDoListProps {
   todos: ToDoType[];
+  darkMode: boolean;
 }
 
-const ToDoList: React.FC<ToDoListProps> = ({todos}) => {
+const ToDoList: React.FC<ToDoListProps> = ({todos, darkMode}) => {
   return (
     <>
       {todos.map((todo) => (
@@ -27,6 +28,7 @@ const ToDoList: React.FC<ToDoListProps> = ({todos}) => {
           name={todo.name}
           details={todo.details}
           Diffeculty={todo.Diffeculty}
+          darkmode={darkMode}
           />
         </div>
       ))}

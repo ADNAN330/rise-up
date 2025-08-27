@@ -4,10 +4,12 @@ name: string | number;
 details: string | number;
 
 Diffeculty : 'Simple'| 'Easy' | 'Medium' | 'Hard' | 'Extreme';
+
+darkmode : boolean;
 }
 
 
-const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty}) => {
+const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty, darkmode}) => {
   
     
 
@@ -20,7 +22,7 @@ const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty}) => {
 
         <div className={'TaskBox'}>
 
-            <div className={'detailsArea'}>
+            <div className={!darkmode ? 'detailsArea' : 'detailsAreaD'}>
 
             <h3 className="TaskTitle">{name}</h3>
 
