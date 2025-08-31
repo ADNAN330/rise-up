@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+
+
 type ToDoProps = {
 name: string | number;
 
@@ -6,11 +9,13 @@ details: string | number;
 Diffeculty : 'Simple'| 'Easy' | 'Medium' | 'Hard' | 'Extreme';
 
 darkmode : boolean;
+
+myid: number|string;
 }
 
 
-const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty, darkmode}) => {
-  
+const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty, darkmode, myid}) => {
+  const navigate = useNavigate();
     
 
   return (
@@ -22,7 +27,7 @@ const ToDo: React.FC<ToDoProps> = ({name, details, Diffeculty, darkmode}) => {
 
         <div className={'TaskBox'}>
 
-            <div className={!darkmode ? 'detailsArea' : 'detailsAreaD'}>
+            <div className={!darkmode ? 'detailsArea' : 'detailsAreaD'} onClick={() =>{navigate('/EditToDo'+'/' + myid)}}>
 
             <h3 className="TaskTitle">{name}</h3>
 

@@ -29,6 +29,7 @@ const ToDoList: React.FC<ToDoListProps> = ({todos, darkMode}) => {
           details={todo.details}
           Diffeculty={todo.Diffeculty}
           darkmode={darkMode}
+          myid={todo.id}
           />
         </div>
       ))}

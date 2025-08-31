@@ -24,6 +24,7 @@ import EditTask from './EditTask';
 import XPBar from './XPBar';
 import AddToDoPage from './AddToDoPage';
 import TaskSearchBar from './TaskSearchBar';
+import EditToDo from './EditToDo';
 
 // Icons
 
@@ -296,6 +297,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path="/addTask" element={<AddTaskPage />} />
       <Route path="/addToDo" element={<AddToDoPage />} />
       <Route path="/EditTask/:id" element={<EditTask />} />
+      <Route path="/EditToDo/:id" element={<EditToDo />} />
       <Route path="/LogIn" element={<LogIn />} />
     </Routes>
   </BrowserRouter>
