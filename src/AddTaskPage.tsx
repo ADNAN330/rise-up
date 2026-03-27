@@ -150,7 +150,7 @@ function Submit() {
                  <h4 className='actionButtons' onClick={Submit}>Add</h4>
               </div>
            
-           <div className="outerinputcon">
+             <div className="outerinputcon">
             <div className="innerinputcon">
   <textarea className='taskNameInput' value={taskName}  onChange={(e) => setTaskName(e.target.value)}  placeholder='Task Name'/>
 

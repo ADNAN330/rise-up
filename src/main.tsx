@@ -218,7 +218,8 @@ const Home = () => {
         <h2>Check your internet connection</h2>
       </div>
     );
-  } else if (!isThemeLoaded || isLoading || isFetching) {
+  } 
+   else if (!isThemeLoaded || isLoading || isFetching) {
     return (
       <div className='loadingScene'>
         <h1 className='loading'>LOADING...</h1>
